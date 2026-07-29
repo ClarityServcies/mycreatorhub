@@ -1,0 +1,14 @@
+TOMAS_MQ \mods\Tomas.zip
+PARTICLE \mods\New_Crash_Particle_3.zip
+GHOSTISH \vehicles\madcat_ghost
+SPACE_NAME \mods\unpacked\CharacterTexFix\vehicles\Resizable Lightning Mcqueen
+MAJORA_BARE_TEX bluebuddy
+MAJORA_BARE_TEX creepy_clown
+MAJORA_BARE_TEX crimson_moon
+MAJORA_BARE_TEX giggle_planet
+MAJORA_BARE_TEX grinning_moon_a
+MAJORA_BARE_TEX grinning_moon_b
+MAJORA_BARE_TEX jack_skeleton
+MAJORA_BARE_TEX monster_ball
+MAJORA_BARE_TEX smiling_moon
+MAJORA_BARE_TEX the_grinning_moon
