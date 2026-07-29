@@ -1,0 +1,51 @@
+{
+  "file": "C:\\Users\\disrv\\AppData\\Local\\BeamNG\\BeamNG.drive\\current\\mods\\unpacked\\majora_moon\\vehicles\\grinning_hollow\\grinning_hollow.dae",
+  "geometries": {
+    "grinning_hollow-mesh": {
+      "vertices": 33108,
+      "faces": 60000,
+      "bounds_min": [
+        -0.8403210043907166,
+        -0.9236270189285278,
+        -0.949999988079071
+      ],
+      "bounds_max": [
+        0.8403210043907166,
+        0.9236270189285278,
+        0.949999988079071
+      ],
+      "size": [
+        1.680642008781433,
+        1.8472540378570557,
+        1.899999976158142
+      ],
+      "has_uv": true,
+      "has_normals": true,
+      "watertight": false,
+      "material": "PBRMaterial"
+    }
+  },
+  "total": {
+    "geometries": 1,
+    "vertices": 33108,
+    "faces": 60000,
+    "bounds_min": [
+      -0.8403210043907166,
+      -0.9236270189285278,
+      -0.949999988079071
+    ],
+    "bounds_max": [
+      0.8403210043907166,
+      0.9236270189285278,
+      0.949999988079071
+    ],
+    "size": [
+      1.680642008781433,
+      1.8472540378570557,
+      1.899999976158142
+    ],
+    "materials": [
+      "PBRMaterial"
+    ]
+  }
+}
