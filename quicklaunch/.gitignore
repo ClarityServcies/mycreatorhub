@@ -1,0 +1,8 @@
+config.json
+cache/
+_ref_revitalised/
+__pycache__/
+*.pyc
+build/
+dist/
+*.spec.bak

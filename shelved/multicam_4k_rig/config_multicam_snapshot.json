@@ -1,0 +1,20 @@
+{
+  "isolation": "userpath",
+  "gfx_mode": "d3d11",
+  "stagger_s": 20.0,
+  "kill_orphans": true,
+  "launch_obs": true,
+  "obs_path": "C:\\Program Files\\obs-studio\\bin\\64bit\\obs64.exe",
+  "sandboxie_path": "",
+  "profiles": [
+    "C:\\BNG1",
+    "C:\\BNG2",
+    "C:\\BNG3"
+  ],
+  "thin_exes": [
+    "",
+    "",
+    ""
+  ],
+  "use_current_selection": true
+}

@@ -1,0 +1,3 @@
+Pillow>=10.0.0
+# Optional Tech mode later:
+# beamngpy>=1.26
