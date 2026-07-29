@@ -1,0 +1,4 @@
+\mods\unpacked\Bus_Eater\vehicles\buseater\buseater_licenseplate.jbeam
+\mods\unpacked\Bus_Eater\vehicles\buseater\buseater_licenseplate_EU.jbeam
+\mods\unpacked\Mock_Eater\vehicles\mockeater\mockeater_licenseplate.jbeam
+\mods\unpacked\Mock_Eater\vehicles\mockeater\mockeater_licenseplate_EU.jbeam

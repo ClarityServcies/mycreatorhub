@@ -1,0 +1,2 @@
+\mods\unpacked\pit_trap_mk2\vehicles\pittrap1\main.materials.json
+\mods\unpacked\spike_trap_mk8\vehicles\spiketrap8\main.materials.json

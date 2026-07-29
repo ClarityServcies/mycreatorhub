@@ -1,0 +1,3 @@
+\mods\unpacked\majora_moon\vehicles\grinning_hollow\main.materials.json
+\mods\unpacked\majora_moon\vehicles\jack_skeleton\main.materials.json
+\mods\unpacked\Moon\vehicles\Moon\main.materials.json
