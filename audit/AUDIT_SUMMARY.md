@@ -25,14 +25,20 @@ Theater blockers + discovery + BREAKING scan + non-vehicle polish **done enough 
 | Graphics | Already **D3D12** High |
 | Walkers | db `active=false` (crab/mechs/void_maw*/rooted*/etc.) |
 
-## Glaring leftover (optional, non-urgent)
+## Cleared this pass
 
 | Item | Note |
 |------|------|
-| Walker zips still on disk | Locked while game open — already inactive in `db.json`; park after close |
-| Tomas.zip strip | Swap file ready in `_parked\Tomas.zip_STRIPPED_ready_swap` |
-| ExplosionLab / Bollard UI | Keybind collision fixed; confirm apps still open in new UI router after restart |
+| Live UI smoke | PASS — 21 theater actions active; `explosionLabUI` + `toggleBollardControl` triggered |
+| Walker zips | Parked to `mods\_parked\walkers_skipped_2026-07-29\` (locust/madcat/rooted/void_maw_klann) |
+| Tomas.zip strip | Applied (backup `_parked\Tomas.zip_before_force_swap`) |
 | Injectors | Special K removed from Bin64 (restorable) |
+
+## Optional noise only
+
+| Item | Note |
+|------|------|
+| bollard_UD part dupes | Log spam vs `/vehicles/common/` — ignore unless named cleanup |
 
 ## Do not do next (per Alex)
 

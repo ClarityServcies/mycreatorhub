@@ -1,6 +1,7 @@
 # Smoke — ExplosionLab + Bollard (0.39)
 
-**Date:** 2026-07-29
+**Date:** 2026-07-29  
+**Live MCP:** PASS (`smallgrid`, physics running)
 
 ## File / mount check — PASS
 
@@ -9,26 +10,26 @@
 | ExplosionLab active | yes (`unpacked`) |
 | BollardContoller active | yes (`unpacked`) |
 | Colliding `input_actions.json` | **gone** |
-| ExplosionLab actions file | `input_actions_explosionlab.json` (18 actions) |
-| Bollard actions file | `input_actions_bollard.json` (4 actions) |
-| Creator Hub `app.json` | present v3.16.5 |
-| Bollard Control `app.json` | present v8.5.1 |
+| ExplosionLab actions file | `input_actions_explosionlab.json` (mounted) |
+| Bollard actions file | `input_actions_bollard.json` (mounted) |
+| UI apps | `ExplosionLab`, `BollardControl`, `HammerControl`, `SpikeControl` |
 
-### ExplosionLab actions (sample)
-`explosionLabUI`, `explosionLabBoom`, `brainrot_run_show`, `brainrot_stop_show`, spawn hammer/slap/tph, …
+## Live MCP — PASS
 
-### Bollard actions
-`toggleBollardControl`, `bollardRaiseAll`, `bollardLowerAll`, `bollardSpawn`
+| Check | Result |
+|-------|--------|
+| `getActiveActions` theater hits | **21** (all ExplosionLab + Bollard GE actions) |
+| `explosionLabUI` | `trigger_action` OK |
+| `toggleBollardControl` | `trigger_action` OK (bollardControl.lua ran; spawned bollard_UD) |
+| Missing-action spam | none for theater keys |
 
-## Live MCP — BLOCKED
+### Active theater actions (sample)
+`explosionLabUI`, `explosionLabBoom`, `brainrot_run_show`, `brainrot_stop_show`, spawn hammer/slap/tph, `toggleBollardControl`, `bollardRaiseAll`, `bollardLowerAll`, `bollardSpawn`
 
-Game MCP not up (`127.0.0.1:29292` down). Can’t confirm action registry / app open in-session.
+### Note
+`bollard_UD` vs `/vehicles/common/` duplicate part-name warnings in log — stock-ish noise, not a theater keybind fail. Skip unless you want a named parts cleanup.
 
-**Alex QA after restart (`-enablemcp` or Options → Enable MCP):**
-1. Apps → add **Creator Hub** + **Bollard Control**
-2. Confirm binds for `explosionLabUI` / `toggleBollardControl` / Brainrot run-stop
-3. No “missing action” spam in console
-
-## Next after that
-
-Session audit is effectively closed unless a **named** break appears.
+## Alex optional QA (eyeballs)
+1. Apps drawer → pin **ExplosionLab** + **Bollard Control**
+2. Hit your binds once in freeroam
+3. Done — audit closed
