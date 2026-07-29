@@ -1,0 +1,14 @@
+﻿4 TRUCKTAXI.zip	vehicles/MQT/input_actions.json
+4 TRUCKTAXI.zip	vehicles/MQT/input_actions1.json
+Chase_MightyPups_Rex.zip	vehicles/cmp_chase/input_actions.json
+hammer.zip	vehicles/hammer/input_actions.json
+hammer.zip	vehicles/hammer/input_actions_hammer.json
+locust_mech.zip	vehicles/locust_mech/input_actions.json
+madcat_ghost.zip	vehicles/madcat_ghost/input_actions.json
+madcat_mech.zip	vehicles/madcat_mech/input_actions.json
+rooted_mech.zip	vehicles/rooted_mech/input_actions.json
+Shreder Grinder and Crusher.zip	vehicles/Shreder Grinder and Crusher/input_actions.json
+SledgeHammer.zip	vehicles/hammer/input_actions.json
+SledgeHammer.zip	vehicles/hammer/input_actions_hammer.json
+Turbo_Twin_Prop_Hover.zip	vehicles/tph/input_actions.json
+void_maw_klann.zip	vehicles/void_maw_klann/input_actions.json
