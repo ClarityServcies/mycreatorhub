@@ -1,0 +1,17 @@
+UNPACKED BollardContoller veh=True ui=True lua=True levels=False
+UNPACKED Bus_Eater veh=True ui=False lua=False levels=False
+UNPACKED Car_Eaters veh=True ui=False lua=False levels=False
+UNPACKED Car_Eater_Big veh=True ui=False lua=True levels=False
+UNPACKED CharacterTexFix veh=True ui=False lua=False levels=False
+UNPACKED ExplosionLab veh=False ui=True lua=True levels=False
+UNPACKED majora_moon veh=True ui=False lua=False levels=False
+UNPACKED Mock_Eater veh=True ui=False lua=True levels=False
+UNPACKED Moon veh=True ui=False lua=False levels=False
+UNPACKED pit_trap_mk2 veh=True ui=False lua=False levels=False
+UNPACKED spike_trap_mk8 veh=True ui=True lua=False levels=False
+UNPACKED Stacked_Empty_Buses veh=True ui=False lua=False levels=False
+UNPACKED Stacked_Rainbow_Buses veh=True ui=False lua=False levels=False
+UNPACKED ZZ_Hide_Vanilla_Vehicles veh=True ui=False lua=False levels=False
+UIAPP \mods\unpacked\BollardContoller\ui\modules\apps\BollardControl\app.json
+UIAPP \mods\unpacked\ExplosionLab\ui\modules\apps\ExplosionLab\app.json
+UIAPP \mods\unpacked\spike_trap_mk8\ui\modules\apps\SpikeControl\app.json

@@ -18,12 +18,13 @@
 ## Skip (Alex)
 - All walker / attach-walk weirdos (crab, madcat, locust, void_maw*, rooted*, mecha_crab, mechanical_spider) — **db active=false**
 
-## Still open (optional, non-walker)
-- Tomas.zip review
-- CharacterTexFix space in vehicle name
-- Bus Eater cooker suffixes (legacy png names)
-- GT7 eyeball pit_trap / spike_trap
-- After game close: move locked walker zips into `_parked\walkers_skipped_2026-07-29\`
+## Stopped vehicle/prop churn (Alex)
+
+See `AUDIT_SUMMARY.md`. Next = restart smoke (ExplosionLab/Bollard UI) only unless a named break.
+
+## Optional after close
+- Park locked walker zips → `_parked\walkers_skipped_2026-07-29\`
+- Swap Tomas → `_parked\Tomas.zip_STRIPPED_ready_swap`
 
 
 ## Restore paths
