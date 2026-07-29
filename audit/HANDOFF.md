@@ -15,13 +15,16 @@
 | `~BEAM UPDATE CURSOR REPO~` | audit docs only (no remote) |
 | `beamng-studio` | mock_crab commits `3f70954` → `820bcfb` |
 
-## Still open (optional)
-- mock_crab crawl feel (soft idle by design — may need stronger walk targets)
+## Skip (Alex)
+- All walker / attach-walk weirdos (crab, madcat, locust, void_maw*, rooted*, mecha_crab, mechanical_spider) — **db active=false**
+
+## Still open (optional, non-walker)
 - Tomas.zip review
 - CharacterTexFix space in vehicle name
 - Bus Eater cooker suffixes (legacy png names)
 - GT7 eyeball pit_trap / spike_trap
-- hammer restore only via `_parked` if SledgeHammer wrong
+- After game close: move locked walker zips into `_parked\walkers_skipped_2026-07-29\`
+
 
 ## Restore paths
 - Special K: `beamng-studio\_parked\injectors_specialk_pre_d3d12_2026-07-29\`
