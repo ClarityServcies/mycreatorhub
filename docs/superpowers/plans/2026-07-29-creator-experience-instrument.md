@@ -19,5 +19,5 @@
 ## Tasks
 
 - [x] Backup live app.js / app.json / info.json
-- [ ] Greenfield instrument UI (banks + pads + status + empty scenes)
-- [ ] Offline verify + STATUS/HANDOFF
+- [x] Greenfield instrument UI (banks + pads + status + empty scenes)
+- [x] Offline verify + STATUS/HANDOFF

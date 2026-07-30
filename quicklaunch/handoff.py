@@ -89,14 +89,20 @@ def ensure_steam(silent: bool = True, wait_s: float = 2.5) -> tuple[bool, bool]:
     if not exe or not exe.is_file():
         return False, False
     try:
-        flags = getattr(subprocess, "DETACHED_PROCESS", 0x8) | getattr(
-            subprocess, "CREATE_NEW_PROCESS_GROUP", 0x200
+        CREATE_NO_WINDOW = 0x08000000
+        flags = (
+            getattr(subprocess, "DETACHED_PROCESS", 0x8)
+            | getattr(subprocess, "CREATE_NEW_PROCESS_GROUP", 0x200)
+            | CREATE_NO_WINDOW
         )
         subprocess.Popen(
             [str(exe), "-silent"],
             cwd=str(exe.parent),
             close_fds=True,
             creationflags=flags if silent else 0,
+            stdin=subprocess.DEVNULL,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
         )
         # brief wait so ticket store is warm — don't block forever
         deadline = time.time() + wait_s

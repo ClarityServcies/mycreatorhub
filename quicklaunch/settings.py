@@ -47,6 +47,7 @@ def default_settings() -> dict[str, Any]:
         "vehicle_spawn_mode": "native",  # native (-vehicle) | lua | both
         "prewarm_steam": True,
         "check_injectors": True,
+        "close_launcher_when_game_opens": True,
         "use_level_flag": True,  # pass -level for map
         "extra_args": "",
         "fast_scan": True,  # skip mods/repo deep zip crawl
@@ -110,6 +111,8 @@ class SettingsStore:
                 merged["prewarm_steam"] = True
             if "check_injectors" not in merged:
                 merged["check_injectors"] = True
+            if "close_launcher_when_game_opens" not in merged:
+                merged["close_launcher_when_game_opens"] = True
             # drop shelved multicam key if present in old configs
             merged.pop("multicam", None)
             self.data = merged

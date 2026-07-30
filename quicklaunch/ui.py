@@ -18,7 +18,7 @@ from discovery import (
     scan_all,
 )
 from handoff import ensure_steam
-from launch import DEFAULT_GFX, LaunchRequest, launch
+from launch import DEFAULT_GFX, LaunchRequest, beamng_process_running, launch
 from paths import app_dir, console_log_path, find_exe, find_game_install, find_userfolder
 from settings import SettingsStore
 from versioning import version_status
@@ -819,7 +819,20 @@ class QuickLaunchApp(tk.Tk):
                 "\n".join(plan.handoff.injector_warnings[:6])
                 + "\n\nGame still launched. Remove/park proxy DLLs if D3D12 fails.",
             )
-        self._set_status(f"Launched ({hs}){warn}. Log: {plan.console_log}")
+        self._set_status(f"Launched ({hs}){warn}. Closing when BeamNG opens…")
+        if bool(self.settings.get("close_launcher_when_game_opens", True)):
+            self._schedule_close_when_game_opens()
+
+    def _schedule_close_when_game_opens(self, tries: int = 0) -> None:
+        """Kill QuickLaunch (and any leftover helper UI) once the game process is up."""
+        if beamng_process_running():
+            self._set_status("BeamNG open — closing launcher.")
+            self.after(250, self.destroy)
+            return
+        if tries >= 180:  # ~90s
+            self._set_status("BeamNG not detected — launcher stays open.")
+            return
+        self.after(500, lambda: self._schedule_close_when_game_opens(tries + 1))
 
     def on_copy_cmd(self) -> None:
         self.clipboard_clear()
@@ -965,6 +978,19 @@ class QuickLaunchApp(tk.Tk):
             activebackground=BG,
         ).pack(anchor="w", padx=12)
 
+        close_when = tk.BooleanVar(
+            value=bool(self.settings.get("close_launcher_when_game_opens", True))
+        )
+        tk.Checkbutton(
+            win,
+            text="Close QuickLaunch when BeamNG opens (no leftover windows)",
+            variable=close_when,
+            bg=BG,
+            fg=FG,
+            selectcolor=CARD,
+            activebackground=BG,
+        ).pack(anchor="w", padx=12)
+
         scan_zips = tk.BooleanVar(value=bool(self.settings.get("scan_mod_zips", True)))
         tk.Checkbutton(
             win,
@@ -1019,6 +1045,7 @@ class QuickLaunchApp(tk.Tk):
             self.settings.set("vehicle_spawn_mode", vmode_var.get())
             self.settings.set("prewarm_steam", prewarm.get())
             self.settings.set("check_injectors", check_inj.get())
+            self.settings.set("close_launcher_when_game_opens", close_when.get())
             self.settings.set("launch_mode", self.launch_mode.get())
             self.settings.save()
             self._set_status(f"Settings saved. GFX={gfx_var.get()} spawn={vmode_var.get()}")

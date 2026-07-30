@@ -50,6 +50,21 @@ class LaunchPlan:
     handoff: HandoffReport = field(default_factory=HandoffReport)
 
 
+def userpath_arg_for(userfolder: str | Path) -> str:
+    """Map content userfolder -> -userpath root for BeamNG 0.39+."""
+    p = Path(userfolder)
+    try:
+        p = p.resolve()
+    except OSError:
+        p = Path(userfolder)
+    if p.name.lower() == "current":
+        # Prefer parent (…\BeamNG.drive) so engine uses …\BeamNG.drive\current\
+        parent = p.parent
+        if parent.is_dir() and ((p / "mods").is_dir() or (p / "settings").is_dir()):
+            return str(parent)
+    return str(p)
+
+
 def config_path_for(vehicle_id: str, config_name: str) -> str:
     """Full VFS path vehicles/<model>/<cfg>.pc (for Lua)."""
     if not config_name or config_name == "Default":
@@ -123,8 +138,11 @@ def build_beamng_args(req: LaunchRequest) -> tuple[list[str], str]:
         args += ["-gfx", gfx]
 
     # 2) userpath before content resolve
+    # BeamNG 0.39 treats -userpath as the version ROOT and then uses <userpath>\current\.
+    # If QuickLaunch already points at ...\BeamNG.drive\current (where mods live), passing
+    # that as -userpath creates an EMPTY ...\current\current\ and hides all mods.
     if req.userfolder:
-        args += ["-userpath", req.userfolder]
+        args += ["-userpath", userpath_arg_for(req.userfolder)]
 
     # 3) native vehicle (preferred) — spawn as player car during level load
     #    parseArgs: -vehicle <model>, -vehicleConfig "model/cfg.pc", -useDefaultPc
@@ -223,13 +241,36 @@ def launch(req: LaunchRequest) -> LaunchPlan:
         "close_fds": True,
     }
     if sys.platform == "win32":
+        # DETACHED + no console window — don't leave cmd/black boxes behind
+        CREATE_NO_WINDOW = 0x08000000
         kwargs["creationflags"] = (
             getattr(subprocess, "DETACHED_PROCESS", 0x8)
             | getattr(subprocess, "CREATE_NEW_PROCESS_GROUP", 0x200)
+            | CREATE_NO_WINDOW
             | 0x8000  # ABOVE_NORMAL_PRIORITY_CLASS
         )
+        kwargs["stdin"] = subprocess.DEVNULL
+        kwargs["stdout"] = subprocess.DEVNULL
+        kwargs["stderr"] = subprocess.DEVNULL
     subprocess.Popen(**kwargs)
     return plan
+
+
+def beamng_process_running() -> bool:
+    """True if a BeamNG.drive game process is alive (not the launcher)."""
+    if sys.platform != "win32":
+        return False
+    try:
+        out = subprocess.run(
+            ["tasklist", "/FI", "IMAGENAME eq BeamNG.drive.x64.exe", "/NH"],
+            capture_output=True,
+            text=True,
+            timeout=5,
+            creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0x08000000),
+        )
+        return "beamng.drive.x64.exe" in (out.stdout or "").lower()
+    except (OSError, subprocess.TimeoutExpired):
+        return False
 
 
 def steam_run_url(args: list[str]) -> str:
